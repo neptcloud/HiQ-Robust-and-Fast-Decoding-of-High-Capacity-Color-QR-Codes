@@ -101,7 +101,8 @@ public class ColorQRcodeEncoder{
 			headerAndDataBits.appendBits(numLetters, numBits);
 			//data content
 			headerAndDataBits.appendBitArray(dataBits);
-			results[i] = com.google.zxing.qrcode.encoder.Encoder.prepareQRCode(headerAndDataBits,version,ecLevels[i],mode);	
+			//add by lian  true
+			results[i] = com.google.zxing.qrcode.encoder.Encoder.prepareQRCode(headerAndDataBits,version,ecLevels[i],mode,true);
 		}
 		return results;
 	}

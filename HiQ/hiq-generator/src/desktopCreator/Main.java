@@ -29,7 +29,8 @@ public class Main extends Application {
 		//useFXMLScene("FrontPage.fxml");
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FrontPage.fxml"));
 		try{
-			Parent page=fxmlLoader.load();
+			//Parent page=fxmlLoader.load();
+			Parent page = FXMLLoader.load(getClass().getResource("FrontPage.fxml"));
 			Scene scene = new Scene(page);
 		    stage.setScene(scene);
 		    stage.sizeToScene();

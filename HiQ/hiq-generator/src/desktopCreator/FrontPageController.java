@@ -62,12 +62,14 @@ import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+/*
 import javafx.print.JobSettings;
 import javafx.print.PageLayout;
 import javafx.print.PageOrientation;
 import javafx.print.Paper;
 import javafx.print.Printer;
 import javafx.print.PrinterJob;
+*/
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -926,19 +928,23 @@ public class FrontPageController {
 	}
 	
 	
-	protected void displayQRCodeImage(BufferedImage[] qrCodeImage, int barcodeImageContentSize){		
+	protected void displayQRCodeImage(BufferedImage[] qrCodeImage, int barcodeImageContentSize){
+		System.out.println("-------------------displayQRCodeImage-------------------"+LAYERNUMBER);
+
 		if(qrCodeImage !=null && qrCodeImage.length ==LAYERNUMBER){
 			if (LAYERNUMBER >= 3) {
 				if(qrCodeImage[0] !=null && qrCodeImage[1] ==null && qrCodeImage[2] ==null
 						&& displayQRCodeImage(image2Dbarcode, qrCodeImage[0], "tmpauthCode", true)){
 					alert("Complete","2D barcode is created. "
 							+ "It stores "+barcodeImageContentSize+" bytes of data (excluding error corrections).");
+					System.out.println("1-It stores "+barcodeImageContentSize+" bytes of data (excluding error corrections).");
 					is2DbarcodeCreated=true;				
 				}else if(displayQRCodeImage(image2Dbarcode, qrCodeImage[0], "tmpauthCode", false)
 				&& displayQRCodeImage(image2Dbarcode2, qrCodeImage[1], "tmpauthCode2", false)
 				&& displayQRCodeImage(image2Dbarcode3, qrCodeImage[2], "tmpauthCode3", false)){
 					alert("Complete","Three 2D barcodes are created. The QR codes store "
 							+barcodeImageContentSize+" bytes of data (excluding error corrections) in total.");
+					System.out.println("3-It stores "+barcodeImageContentSize+" bytes of data (excluding error corrections).");
 					is2DbarcodeCreated=true;
 				}
 			} else if (LAYERNUMBER == 2){
@@ -963,7 +969,7 @@ public class FrontPageController {
 			//if(entry.getKey().compareTo("authCode") ==0) continue;
 		    try {
 		    	URL url=getClass().getResource("temp/");
-				File tempDir = new File(url.toURI());
+				File tempDir = new File("D:");//new File(url.toURI());
 				File tempFile = File.createTempFile((tempFileName.isEmpty())? "tmpauthCode":tempFileName, ".png", tempDir);
 				tempFile.deleteOnExit();
 				ImageIO.write(qrCodeImage, "png",tempFile);
@@ -973,9 +979,9 @@ public class FrontPageController {
 							getClass().getResource("img/authCode.png").toString()); 
 				}					
 				return true;
-			} catch (IOException | URISyntaxException e1) {
+			} catch (IOException /*| URISyntaxException*/ e1) {
 				alert("Error","Cannot put the barcode image into the document : "+e1.getMessage());
-				Log("Cannot put the barcode image into the document : "+e1.getMessage());				
+				Log("Cannot put the barcode image into the document : "+e1.getMessage());
 			}
 		}
 		return false;
@@ -1012,15 +1018,15 @@ public class FrontPageController {
 			alert("Error","Cannot save image into the selected location : "+e1.getMessage());
 		}        
 	}
-	private JobSettings lastPrinterSetting=null; 
-	private Printer lastPrinter=null;
+	//private JobSettings lastPrinterSetting=null;
+	//private Printer lastPrinter=null;
 	/**
 	 * Fired when user click a button to save the created document in the WebView
-	 * @param e
+	 * @param
 	 */
+
 	@FXML protected void saveCreatedDocument(ActionEvent e){
-		if(!is2DbarcodeCreated || templateWebView.getEngine().getDocument()==null){
-			alert("Error","The 2D barcode is not created / does not contain the current input");
+/*			alert("Error","The 2D barcode is not created / does not contain the current input");
 			return;
 		}
 		PrinterJob job=null;
@@ -1071,7 +1077,7 @@ public class FrontPageController {
     		element=doc.select("style").first();
     		if(element !=null) element.html(element.html().replace("display:none", "opacity:0.4"));
 	    	templateWebView.getEngine().loadContent(doc.html());
-    	} else Log("Printing is cancelled");	
+    	} else Log("Printing is cancelled");	*/
 	}
 	
 	private String convertToUTF8(String str){
