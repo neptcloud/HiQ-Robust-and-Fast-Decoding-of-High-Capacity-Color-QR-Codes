@@ -85,7 +85,8 @@ public final class RGBColorWrapper {
 //		this.colorClassifier = this.candidateClassifiers[0];//default one
 		
 //		this.modelSelector = QDA.getInstance("./candidate_classifiers/model_selector.txt");
-		this.colorClassifier = CMIModel.getInstance("/Users/ouyangzhibo/gitlab/colorqrcode/core/candidate_classifiers/LSVM_CMI.txt", "LSVM");
+		//Qmodel_CMI.txt LSVM_CMI.txt
+		this.colorClassifier = CMIModel.getInstance("D:/projects/QRcode/HiQ-Robust-and-Fast-Decoding-of-High-Capacity-Color-QR-Codes/HiQ/hiq-decoder/candidate_classifiers/Qmodel_CMI.txt", "QDA"); //LSVM  QDA
 	}
 	
 	public RGBColorWrapper(int[] rgb, int height, int width, int layerNum, boolean isSimple) {

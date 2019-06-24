@@ -9,8 +9,8 @@ public class CMIModel extends Classifier{
 
 	private double[][] module_weights;
 	private Classifier innerClassifier;
-	private static final String QDA_CMI_COEF_PATH = "./candidate_classifiers/Qmodel_CMI_coef.txt";
-	private static final String LSVM_CMI_COEF_PATH = "./candidate_classifiers/LSVM_CMI_coef.txt";
+	private static final String QDA_CMI_COEF_PATH = "D:/projects/QRcode/HiQ-Robust-and-Fast-Decoding-of-High-Capacity-Color-QR-Codes/HiQ/hiq-decoder/candidate_classifiers/Qmodel_CMI_coef.txt";
+	private static final String LSVM_CMI_COEF_PATH = "D:/projects/QRcode/HiQ-Robust-and-Fast-Decoding-of-High-Capacity-Color-QR-Codes/HiQ/hiq-decoder/candidate_classifiers/LSVM_CMI_coef.txt";
 	
 	public CMIModel(Classifier innerClassifier, double[][] module_weights) {
 		super();

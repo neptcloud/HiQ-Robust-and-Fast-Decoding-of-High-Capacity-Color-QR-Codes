@@ -194,7 +194,7 @@ public final class Decoder {
 				codewordBytes = backupblocks[counterB].getCodewords();
 				numDataCodewords = backupblocks[counterB].getNumDataCodewords();
 			}else continue;
-		}		
+		}
 		successBlockCount++;
 		baos.write(codewordBytes, 0, numDataCodewords);   
     }
